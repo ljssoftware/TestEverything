@@ -15,6 +15,7 @@
         <module>java-generic</module>
         <module>java-nio</module>
         <module>java-common</module>
+        <module>java-pattern</module>
     </modules>
 
 </project>

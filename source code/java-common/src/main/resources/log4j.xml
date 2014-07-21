@@ -39,7 +39,7 @@
         </filter>
     </appender>
 
-    <!-- 虚拟活动用户地址日志 -->
+    <!-- 并发日志文件 -->
     <appender name="CONCURRENCY-LOG" class="org.apache.log4j.DailyRollingFileAppender">
         <param name="Append" value="true"/>
         <param name="file" value="${gamecoin.log.path}/test-concurrency.log"/>
@@ -50,6 +50,19 @@
 
     <category name="CONCURRENCY" additivity="true">
         <appender-ref ref="CONCURRENCY-LOG"/>
+    </category>
+
+    <!-- NIO 日志文件 -->
+    <appender name="NIO-LOG" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="Append" value="true"/>
+        <param name="file" value="${gamecoin.log.path}/test-nio.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%m \n"/>
+        </layout>
+    </appender>
+
+    <category name="NIO" additivity="true">
+        <appender-ref ref="NIO-LOG"/>
     </category>
 
     <root>
