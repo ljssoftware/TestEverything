@@ -5,9 +5,7 @@ import com.testeverything.serializable.domain.OnlineExam;
 import com.testeverything.serializable.domain.OnlineItem;
 import com.testeverything.serializable.domain.OnlineProblem;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,9 +14,9 @@ import java.util.List;
  * 测试 java自带的 序列化的 长度
  * Created by lijinsheng on 14-3-12.
  */
-public class TestSerializable {
+public class TestJavaSerializable {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         List<OnlineProblem> problemList = new ArrayList<OnlineProblem>();
         for (int i = 0; i < 10; i++) {
             List<OnlineItem> itemList = new ArrayList<OnlineItem>();
@@ -50,11 +48,15 @@ public class TestSerializable {
         onlineExam.setEndTime(new Date());
         onlineExam.setState(2);
         onlineExam.setInterval(1000);
-        onlineExam.setProblemList(problemList);
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
         objectOutputStream.writeObject(onlineExam);
+
+        byte[] byteArray = new byte[100];
+        ObjectInputStream objectInputStream = new ObjectInputStream(new ByteArrayInputStream(byteArray));
+        OnlineExam onlineExam1 = (OnlineExam)objectInputStream.readObject();
+
         System.out.println(byteArrayOutputStream.toString("UTF-8"));
         System.out.println("字符串长度:" + byteArrayOutputStream.toString("UTF-8").length());
 

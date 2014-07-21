@@ -11,7 +11,10 @@
     <modules>
         <module>java-agent</module>
         <module>java-serializable</module>
+        <module>java-concurrency</module>
+        <module>java-generic</module>
+        <module>java-nio</module>
+        <module>java-common</module>
     </modules>
-
 
 </project>

@@ -21,7 +21,7 @@ public class OnlineExam implements Serializable {
     private transient Date created;  //DATE NOT NULL,
     private transient Date modified;  //DATE NOT NULL COMMENT '修改时间 ',
 
-    private List<OnlineProblem> problemList; //考试包含的题目
+//    private List<OnlineProblem> problemList; //考试包含的题目
 
     public Long getExamId() {
         return examId;
@@ -103,13 +103,13 @@ public class OnlineExam implements Serializable {
         this.modified = modified;
     }
 
-    public List<OnlineProblem> getProblemList() {
-        return problemList;
-    }
+//    public List<OnlineProblem> getProblemList() {
+//        return problemList;
+//    }
 
-    public void setProblemList(List<OnlineProblem> problemList) {
-        this.problemList = problemList;
-    }
+//    public void setProblemList(List<OnlineProblem> problemList) {
+//        this.problemList = problemList;
+//    }
 
     @Override
     public String toString() {
@@ -124,7 +124,7 @@ public class OnlineExam implements Serializable {
                 ", difficultyLevel=" + difficultyLevel +
                 ", created=" + created +
                 ", modified=" + modified +
-                ", problemList=" + problemList +
+//                ", problemList=" + problemList +
                 '}';
     }
 }
