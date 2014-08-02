@@ -16,7 +16,7 @@ public class SocketChannelTest {
         try {
             //初始化 selector 和 socket channel
             socketChannel = SocketChannel.open();
-            boolean connectResult = socketChannel.connect(new InetSocketAddress("wan.jd.net", 80));
+            boolean connectResult = socketChannel.connect(new InetSocketAddress("10.12.206.65", 80));
             if (!connectResult) {
                 LogHelper.NIO_LOGGER.error("SocketChannelTest connection 没有建立成功");
                 return;

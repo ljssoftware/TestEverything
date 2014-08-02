@@ -15,4 +15,8 @@ public class LogHelper {
     //NIO的日志信息
     private static final String NIO_LOGGER_NAME = "NIO";
     public static final Logger NIO_LOGGER = Logger.getLogger(NIO_LOGGER_NAME);
+
+    //Zookeeper的日志信息
+    private static final String ZOOKEEPER_LOGGER_NAME = "ZOOKEEPER";
+    public static final Logger ZOOKEEPER_LOGGER = Logger.getLogger(ZOOKEEPER_LOGGER_NAME);
 }

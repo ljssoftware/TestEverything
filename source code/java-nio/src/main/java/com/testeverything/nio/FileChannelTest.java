@@ -41,29 +41,34 @@ public class FileChannelTest {
         }
         LogHelper.NIO_LOGGER.info("position:" + position + ";size:" + size);
 
-        MappedByteBuffer mappedByteBuffer;
-        try {
-            mappedByteBuffer = fileChannel.map(FileChannel.MapMode.READ_WRITE, 0, size);
-        } catch (IOException e) {
-            LogHelper.NIO_LOGGER.info(e);
-            return;
-        }
-        LogHelper.NIO_LOGGER.info("capacity:" + mappedByteBuffer.capacity() + "; limit:" + mappedByteBuffer.limit() + ";position:" + mappedByteBuffer.position());
+//        MappedByteBuffer mappedByteBuffer;
+//        try {
+//            mappedByteBuffer = fileChannel.map(FileChannel.MapMode.READ_WRITE, 0, size);
+//        } catch (IOException e) {
+//            LogHelper.NIO_LOGGER.info(e);
+//            return;
+//        }
+//        LogHelper.NIO_LOGGER.info("capacity:" + mappedByteBuffer.capacity() + "; limit:" + mappedByteBuffer.limit() + ";position:" + mappedByteBuffer.position());
 
-        ByteBuffer byteBuffer = ByteBuffer.allocate(48);
+        ByteBuffer byteBuffer = ByteBuffer.allocateDirect(48);
         try {
             LogHelper.NIO_LOGGER.info("channel position:" + fileChannel.position() + ";byteBuffer position:" + byteBuffer.position() + ";remain:" + byteBuffer.remaining());
             int byteRead = fileChannel.read(byteBuffer);
             LogHelper.NIO_LOGGER.info("channel position:" + fileChannel.position() + ";byteBuffer position:" + byteBuffer.position() + ";remain:" + byteBuffer.remaining() + ";byteRead:" + byteRead);
 
             while (byteRead != -1) {
-                LogHelper.NIO_LOGGER.info("content:" + new String(byteBuffer.array(), "GBK"));
+                byteBuffer.flip();
+                byte[] bytes = new byte[byteBuffer.limit()];
+                for (int i = 0; i < byteBuffer.limit(); i++) {
+                    bytes[i] = byteBuffer.get();
+                }
+                LogHelper.NIO_LOGGER.info("read content:" + new String(bytes, "GBK"));
                 byteBuffer.clear();
                 byteRead = fileChannel.read(byteBuffer);
                 LogHelper.NIO_LOGGER.info("channel position:" + fileChannel.position() + ";byteBuffer position:" + byteBuffer.position() + ";remain:" + byteBuffer.remaining() + ";byteRead:" + byteRead);
             }
             byteBuffer.put(new String("李金声").getBytes("GBK"));
-            LogHelper.NIO_LOGGER.info("content:" + new String(byteBuffer.array(), "GBK"));
+//            LogHelper.NIO_LOGGER.info("content:" + new String(byteBuffer.array(), "GBK"));
             byteBuffer.flip();
             fileChannel.position(fileChannel.size());
             fileChannel.write(byteBuffer);
