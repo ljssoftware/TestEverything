@@ -66,6 +66,15 @@
         </layout>
     </appender>
 
+    <!-- CONSISTENT 日志文件 -->
+    <appender name="CONSISTENT-LOG" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="Append" value="true"/>
+        <param name="file" value="${gamecoin.log.path}/test-consistent.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%m \n"/>
+        </layout>
+    </appender>
+
     <category name="CONCURRENCY" additivity="true">
         <appender-ref ref="CONCURRENCY-LOG"/>
     </category>
@@ -76,6 +85,10 @@
 
     <category name="ZOOKEEPER" additivity="true">
         <appender-ref ref="ZOOKEEPER-LOG"/>
+    </category>
+
+    <category name="CONSISTENT" additivity="true">
+        <appender-ref ref="CONSISTENT-LOG"/>
     </category>
 
     <root>

@@ -19,4 +19,8 @@ public class LogHelper {
     //Zookeeper的日志信息
     private static final String ZOOKEEPER_LOGGER_NAME = "ZOOKEEPER";
     public static final Logger ZOOKEEPER_LOGGER = Logger.getLogger(ZOOKEEPER_LOGGER_NAME);
+
+    //一致性hash的日志信息
+    private static final String CONSISTENT_LOGGER_NAME = "CONSISTENT";
+    public static final Logger CONSISTENT_LOGGER = Logger.getLogger(CONSISTENT_LOGGER_NAME);
 }
