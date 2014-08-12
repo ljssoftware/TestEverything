@@ -8,9 +8,9 @@ import org.apache.zookeeper.Watcher;
  * 事件监听者
  * Created by lijinsheng on 14-7-28.
  */
-public class MyWatcher implements Watcher {
+public class AdminWatcher implements Watcher {
     @Override
     public void process(WatchedEvent event) {
-        LogHelper.ZOOKEEPER_LOGGER.info("MyWatcher:process 监听到的事件信息:" + event.toString());
+        LogHelper.ZOOKEEPER_LOGGER.info("AdminWatcher:process 监听到的事件信息:" + event.toString());
     }
 }

@@ -18,6 +18,7 @@
         <module>java-pattern</module>
         <module>java-netty</module>
         <module>java-zookeeper</module>
+        <module>java-consistency</module>
     </modules>
 
 </project>
